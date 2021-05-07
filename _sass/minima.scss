@@ -1,0 +1,20 @@
+* {
+	font-size: 20px !important
+}
+
+header nav ul {
+
+	display: flex;
+	flex-wrap: wrap;
+	list-style: none;
+
+	li {
+
+		padding-right: 10px;
+
+		&:last-child {
+			padding-right: 0;
+		}
+	}
+
+}
