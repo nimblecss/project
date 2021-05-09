@@ -1,34 +1,3 @@
-// positioning //////////////////////////
-header {
-
-	&.page-header-wrap {
-	}
-
-	nav {
-
-	    &.main-menu-hover-dropdown {
-	
-			ul {
-
-				li {
-
-					position: relative;
-
-					ul {
-						position: absolute;
-					}
-
-					&:hover {
-						ul {
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-// display & box model //////////////////
 header {
 
 	&.page-header-wrap {
@@ -36,34 +5,51 @@ header {
 		display: flex;
 		flex-wrap: wrap;
 		justify-content: center;
+
+		background: lightgray;
+
+		font-family: Arial, sans-serif;
 	}
 
 	nav {
 
 	    &.main-menu-hover-dropdown {
 	
-			ul {
-	
-			    display: flex;
+			& > ul {
+
+				display: flex;
     			flex-wrap: wrap;
     			padding-left: 0;
+    			margin: 0;
 
-				li {
+    			list-style: none;
 
-					padding-right: 1rem;
+				& > li {
+
+					position: relative;
+
+					padding: 0.75rem 0.75rem 0.75rem 0;
+					background: transparent;
 
 					&:last-child {
 
 						padding-right: 0;
 					}
 
+
 					ul {
+						position: absolute;
+
 						display: none;
 						padding: 1rem;
-						top: 2.1rem;
+						top: 2.5rem;
 						min-width: max-content;
 						border-width: 1px;
 						border-style: solid;
+						z-index: 1;
+
+						background: white;
+						border-color: gray;						
 					}
 
 					&:hover {
@@ -75,59 +61,4 @@ header {
 			}
 		}
 	}
-}
-
-
-// colors //////////////////////////////
-header {
-
-	&.page-header-wrap {
-		background: lightgray;	
-	}
-
-	nav {
-
-	    &.main-menu-hover-dropdown {
-	
-			ul {
-
-				li {
-						background: gray;
-
-					ul {
-						background: white;
-						border-color: gray;
-					}
-
-					&:hover {
-						ul {
-						}
-					}
-				}
-			}
-		}
-	}
-}
-
-
-// typography ///////////////////////// 
-header {
-	&.page-header-wrap {
-		font-family: Arial, sans-serif;
-	}
-}
-
-// other //////////////////////////////
-header {	
-	&.page-header-wrap {}
-
-	nav {
-
-	    &.main-menu-hover-dropdown {
-	
-			ul {
-				list-style: none;
-    		}
-    	}
-    }
 }

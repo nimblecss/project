@@ -6,6 +6,8 @@ permalink: /main-menu-hover-dropdown/
 
 This page gives details about the **main menu hover dropdown** component.
 
+Note: Before we even begin, please note that we're using the Eric Meyer's CSS reset file and that's the starting point of all the other work in the Nimble CSS component library.
+
 ## The goal
 
 We want a main navigation that would look like a single horizontal group of top-level ("first-level") links. 
@@ -447,15 +449,194 @@ Here is the look of the menu now.
 ![Our menu after adding the background on top-level li elements](/assets/img/main-menu-hover-dropdown/003.png)
 
 Now we can understand the issue that we're faced with:
-* the ul inside the navbar has redundant `margin-block-start` and `margin-block-end` properties set; the solution is to reset all the margins to 0
-* we subsequently need to add vertical padding to top level `li` elements on the menu
+* the ` inside the navbar has redundant `margin-block-start` and `margin-block-end` properties set; the solution is to reset all the margins to 0
+* we subsequently need to add vertical padding to top level `li` elements on the menu (otherwise the header and the main menu inside of it will have the same narrow height - the height of the darker-gray area of `li` content)
 
-Additionally, due to the way the CSS inheritance works, **all** the `li` that are nested in a `ul` will also get the background of `gray` - as shown in the above image.
+Additionally, due to the way the CSS inheritance works, **all** the `li` that are nested in a `ul` will also get the background of `gray` - as shown in the above image. This means that we'll need to increase the specificity on the nested `li` by implementing either one of these two options:
+* using the `ul > li` syntax (the direct descendant syntax, officially known as the "child combinator")
+* adding a CSS class to the `li` elements so that we distinguish them from the more deeply nested `li` elements (on possible sub-sub-navigation levels)
 
-This means that we'll need to increase the specificity on the nested `li` by implementing either one of these two options:
-* using the `ul > li` syntax (the direct descendant syntax)
-*  
+Our goal is to have as few CSS classes in our markup as possible, so let's use the child combinator syntax, `ul > li`.
 
+To reiterate, we have two additional changes to our mege-menu-hover-dropdown component's SCSS file:
+* the margin "reset" on `ul` inside the navbar
+* the vertical padding on top level `li` nav items
+
+Here's the relevant update to `main-menu-hover-dropdown.scss`:
+```scss
+// display & box model //////////////////
+header {
+
+	&.page-header-wrap {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			& > ul {
+	
+			    display: flex;
+    			flex-wrap: wrap;
+    			padding-left: 0;
+    			margin: 0;
+
+				& > li {
+
+					padding: 0.75rem 0.75rem 0.75rem 0;
+...
+```
+
+However, we are not done yet. We need to tackle the `z-index` issue too, as can be seen in the image below.
+
+{:class="d-block"}
+![Our sub-menu's z-index is broken(/assets/img/main-menu-hover-dropdown/004.png)
+
+It's enough to give our sub-menu `ul` a `z-index: 1` to fix the issue. However, due to the fact the we're setting the padding in rem units, we also need to push it down a bit (or possibly leave it as is, depending on what kind of look we're going after).
+
+Here's the new SCSS update:
+```scss
+// display & box model //////////////////
+header {
+
+	&.page-header-wrap {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			& > ul {
+	
+			    display: flex;
+    			flex-wrap: wrap;
+    			padding-left: 0;
+    			margin: 0;
+
+				& > li {
+
+					padding: 0.75rem 0.75rem 0.75rem 0;
+
+					&:last-child {
+
+						padding-right: 0;
+					}
+
+					ul {
+						display: none;
+						padding: 1rem;
+						top: 2.5rem;
+						min-width: max-content;
+						border-width: 1px;
+						border-style: solid;
+						z-index: 1;
+					}
+```
+
+Additionally, we've removed the gray background from the top-level nav's `li` items. However, we've made it more readily editable by using the `background: transparent` CSS property:
+```
+// colors //////////////////////////////
+header {
+
+	&.page-header-wrap {
+		background: lightgray;	
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			ul {
+
+				li {
+						background: transparent;
+```
+
+That is basically it for our simple main-menu-hover-dropdown CSS component. Here's the complete SCSS file:
+```
+header {
+
+	&.page-header-wrap {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+
+		background: lightgray;
+
+		font-family: Arial, sans-serif;
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			& > ul {
+
+				display: flex;
+    			flex-wrap: wrap;
+    			padding-left: 0;
+    			margin: 0;
+
+    			list-style: none;
+
+				& > li {
+
+					position: relative;
+
+					padding: 0.75rem 0.75rem 0.75rem 0;
+					background: transparent;
+
+					&:last-child {
+
+						padding-right: 0;
+					}
+
+
+					ul {
+						position: absolute;
+
+						display: none;
+						padding: 1rem;
+						top: 2.5rem;
+						min-width: max-content;
+						border-width: 1px;
+						border-style: solid;
+						z-index: 1;
+
+						background: white;
+						border-color: gray;						
+					}
+
+					&:hover {
+						ul {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+```
+
+However, we're still having to deal with the fact that on mobile devices, hover interactions don't really work - because there's no mouse to hover over with.
+
+This brings us to another dilemma: should we make our component adjust to mobiles too, or should we use the old HTML/CSS trick of "show one nav on mobile, and a completely different nav on desktop"?
+
+Although it might be a bit bloated, I favor the second approach, purely because it's more modular. 
+
+Having separate navigation schemes for mobile and desktop means that we can mix and match the navigation components as we like, rather then having to use a tightly coupled "one-size-fits-all" solution.
+
+This means we need to introduce another component, called `main-menu-mobile-one` (it's a working title).
 
 [hover-dropdown]: {{ site.baseurl }}/main-menu-hover-dropdown
 [nimble-gh]:   https://github.com/nimblecss/project
