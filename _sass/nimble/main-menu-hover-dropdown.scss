@@ -1,0 +1,133 @@
+// positioning //////////////////////////
+header {
+
+	&.page-header-wrap {
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			ul {
+
+				li {
+
+					position: relative;
+
+					ul {
+						position: absolute;
+					}
+
+					&:hover {
+						ul {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+// display & box model //////////////////
+header {
+
+	&.page-header-wrap {
+
+		display: flex;
+		flex-wrap: wrap;
+		justify-content: center;
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			ul {
+	
+			    display: flex;
+    			flex-wrap: wrap;
+    			padding-left: 0;
+
+				li {
+
+					padding-right: 1rem;
+
+					&:last-child {
+
+						padding-right: 0;
+					}
+
+					ul {
+						display: none;
+						padding: 1rem;
+						top: 2.1rem;
+						min-width: max-content;
+						border-width: 1px;
+						border-style: solid;
+					}
+
+					&:hover {
+						ul {
+							display: block;
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// colors //////////////////////////////
+header {
+
+	&.page-header-wrap {
+		background: lightgray;	
+	}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			ul {
+
+				li {
+						background: gray;
+
+					ul {
+						background: white;
+						border-color: gray;
+					}
+
+					&:hover {
+						ul {
+						}
+					}
+				}
+			}
+		}
+	}
+}
+
+
+// typography ///////////////////////// 
+header {
+	&.page-header-wrap {
+		font-family: Arial, sans-serif;
+	}
+}
+
+// other //////////////////////////////
+header {	
+	&.page-header-wrap {}
+
+	nav {
+
+	    &.main-menu-hover-dropdown {
+	
+			ul {
+				list-style: none;
+    		}
+    	}
+    }
+}

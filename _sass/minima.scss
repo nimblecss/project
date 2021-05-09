@@ -1,20 +1,52 @@
-* {
-	font-size: 20px !important
+pre {
+	tab-size: 4;
+	background: whitesmoke;
 }
 
-header nav ul {
-
-	display: flex;
-	flex-wrap: wrap;
-	list-style: none;
-
-	li {
-
-		padding-right: 10px;
-
-		&:last-child {
-			padding-right: 0;
-		}
-	}
-
+.arial {
+	font-family: Arial, sans-serif;
 }
+
+.ul-reset {
+    padding-left: 0; 	// dbm	
+    list-style: none; 	// other
+}
+
+.fs0 {
+	font-size: 0.5rem;
+}
+.fs10 {
+	font-size: 0.675rem;
+}
+.fs20 {
+	font-size: 0.75rem;
+}
+.fs30 {
+	font-size: 0.85rem;
+}
+.fs40 {
+	font-size: 1rem;
+}
+.fs50 {
+	font-size: 1.1rem;
+}
+.fs60 {
+	font-size: 1.25rem;
+}
+.fs70 {
+	font-size: 1.5rem;
+}
+.fs80 {
+	font-size: 1.75rem;
+}
+.fs90 {
+	font-size: 2rem;
+}
+
+.d-block {
+	display: block;
+}
+
+// Import partials
+@import
+	"nimble/main-menu-hover-dropdown";
