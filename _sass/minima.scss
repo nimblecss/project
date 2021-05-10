@@ -1,7 +1,57 @@
-pre {
-	tab-size: 4;
-	background: whitesmoke;
+.page-content {
+	width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    font-family: Arial, sans-serif;
+
+    img {
+	    max-width: 100%;
+	    border-radius: 1rem;
+	    margin: 1rem 0;
+	    box-shadow: 0rem 0.2rem 1rem 0.1rem lightgrey;    	
+    }
+
+	h6 {
+		font-size: 0.75rem;
+	}
+	h5 {
+		font-size: 1rem;
+	}
+	h4 {
+		font-size: 1.25rem;
+	}
+	h3 {
+		font-size: 1.5rem;
+	}
+	h2 {
+		font-size: 1.75rem;
+	}
+	h1 {
+		font-size: 2rem;
+	}
+	h1, h2, h3, h4, h5, h6 {
+		margin: 2.5rem 0.75rem 1rem 0;
+		font-weight: bold;
+	}
+
+	pre.highlight, code {
+		font-family: monospace;
+		background: whitesmoke;
+
+	    padding: 0 .4rem;
+	    color: #bd4147;
+	    background-color: #f8f9fa;
+	    border-radius: 0;			
+	}
+
+	pre.highlight {
+		margin: 1rem 0;
+		padding: 1rem;
+		tab-size: 4;
+	}	   
 }
+
 
 .arial {
 	font-family: Arial, sans-serif;
