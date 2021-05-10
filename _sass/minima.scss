@@ -53,9 +53,20 @@
 
 	p {
 		padding: 1rem 0;
-	}   
+	}
+
 }
 
+footer.footer {
+	text-align: center;
+	border-top: 1px solid #a2a2a2;
+	max-width: 320px;
+	margin: 0 auto;
+	padding: 1.5rem 0;
+	font-size: .85rem;
+	font-family: Arial;
+	color: #456;
+}
 
 .arial {
 	font-family: Arial, sans-serif;
