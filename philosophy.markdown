@@ -17,7 +17,7 @@ Nested SCSS mimics HTML structure - we should use that to our advantage.
 ### 1. CSS Structure Ordering
 
 Each specific component's HTML structure must be split to the following structure ordering.
-
+```scss
 // CSS property ordering
 // 1. Positioning (position)
 	// position: ...
@@ -43,6 +43,7 @@ Each specific component's HTML structure must be split to the following structur
 	// text-align
 // 5. Other (other)
 	// cursor
+```
 
 Inside each individual structure ordering, each property is organized logically.
 
@@ -90,27 +91,3 @@ What do you get out of using Nimble CSS framework?
 5. Really lean HTML and CSS - we avoid bloat as much as possible.
 
 What follows is a logical layout of how the framework works.
-
-## Styling "interactions" between HTML elements
-
-### Container relationships
-
-Basically, all HTML elements' relationships can be defined as:
-1. parent-child relationships
-2. sibling relationships
-
-#### 1. Parent-child relationships
-
-Here are the parent-child relationships:
-1. Relatively positioned parent, absolutely positioned children
-2. to be improved...
-
-#### 2. Sibling relationships
-
-Here are the sibling relationships:
-1. inline ("span-like")
-2. block ("div-like")
-
-We've divided the framework's styling as follows:
-1. `x-` is x-axis "positioning"
-2. `y-` is y-axis "positioning"

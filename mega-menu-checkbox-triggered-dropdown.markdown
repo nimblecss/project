@@ -195,7 +195,7 @@ If only used with the mouse, it works without issues. However, sinc there are is
 
 Using [the tabindex attribute](https://www.unimelb.edu.au/accessibility/aria/wai-aria-keyboard-focus){:target="_blank"}, we can now make any element tabable, using `tabindex="0"`.
 
-But [this improvement](https://codepen.io/AjdinImsirovic/pen/mdWOMwx){:target="_blank"} is as far as the checkbox hack takes us in our quest to make an accessible, CSS-only mega menu.
+But [this improvement](https://codepen.io/AjdinImsirovic/pen/mdWOMwx){:target="_blank"} is as far as the checkbox hack takes us in our quest to make [an accessible, CSS-only mega menu](https://moderncss.dev/css-only-accessible-dropdown-navigation-menu/){:target="_blank"}.
 
 This means that we'll need to take our existing mega menu, and update it by first removing the checkbox hack code.
 

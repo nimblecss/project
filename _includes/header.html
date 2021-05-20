@@ -1,49 +1,32 @@
-<header class="page-header-wrap">
-	<!-- <nav class="main-menu-hover-dropdown"> -->
-	<nav class="mega-menu-checkbox-triggered-dropdown">
-		<ul>
-			<li>
-				<a href="/">Nimblecss.com</a>
-			</li>
-			<li>
-				<a href="/quickstart">Quickstart</a>
-				<ul>
-					<li>
-						<a href="#">
-							Sample sub-link 1
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							Sample sub-link 2
-						</a>
-					</li>
-				</ul>
-			</li>
-			<li>
-				<a href="/philosophy">Philosophy</a>
-			</li>
-			<li>
-				<a href="/components">Components</a>
-				<ul>
-					<li>
-						<a href="/main-menu-hover-dropdown">
-							Mega menu hover dropdown
-						</a>
-					</li>
-					<li>
-						<a href="/mega-menu-checkbox-triggered-dropdown">
-							Mega menu checkbox-triggered dropdown
-						</a>
-					</li>
-				</ul>				
-			</li>
-			<li>
-				<a href="/examples">Examples</a>
-			</li>
-			<li>
-				<a href="/showcase">Showcase</a>
-			</li>
-		</ul>
-	</nav>
+<header>
+  <nav aria-label="Main Navigation">
+    <ul>
+      <li>
+        <a href="#">Nimblecss.com</a>
+      </li>
+      <li class="dropdown">
+        <!-- aria-expanded needs managed with Javascript -->
+        <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="quickstart-dropdown">
+          Quickstart
+        </button>
+        <ul class="dropdown__menu" id="quickstart-dropdown">
+          <li><a href="#">Sample sub-link 1</a></li>
+          <li><a href="#">Sample sub-link 2</a></li>
+        </ul>
+      </li>
+      <li><a href="/philosophy">Philosophy</a></li>
+      <li class="dropdown">
+        <!-- aria-expanded needs managed with JavaScript -->
+        <button type="button" class="dropdown__title" aria-expanded="false" aria-controls="components-dropdown">
+          Components
+        </button>
+        <ul class="dropdown__menu" id="components-dropdown">
+          <li><a href="/mega-menu-hover-dropdown">Mega menu hover dropdown</a></li>
+          <li><a href="/mega-menu-checkbox-triggered-dropdown">Mega menu checkbox-triggered dropdown</a></li>
+        </ul>
+      </li>
+      <li><a href="/examples">Examples</a></li>
+      <li><a href="/showcase">Showcase</a></li>
+    </ul>
+  </nav>
 </header>
