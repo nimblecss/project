@@ -8,6 +8,8 @@ This page gives details about the **main menu hover dropdown** component.
 
 Note: Before we even begin, please note that we're using the Eric Meyer's CSS reset file and that's the starting point of all the other work in the Nimble CSS component library.
 
+The codepen is available here: [https://codepen.io/AjdinImsirovic/pen/oNZYwwg](https://codepen.io/AjdinImsirovic/pen/oNZYwwg){:target="_blank"}
+
 ## The goal
 
 We want a main navigation that would look like a single horizontal group of top-level ("first-level") links. 
@@ -494,7 +496,7 @@ header {
 However, we are not done yet. We need to tackle the `z-index` issue too, as can be seen in the image below.
 
 {:class="d-block"}
-![Our sub-menu's z-index is broken(/assets/img/main-menu-hover-dropdown/004.png)
+![Our sub-menu's z-index is broken](/assets/img/main-menu-hover-dropdown/004.png)
 
 It's enough to give our sub-menu `ul` a `z-index: 1` to fix the issue. However, due to the fact the we're setting the padding in rem units, we also need to push it down a bit (or possibly leave it as is, depending on what kind of look we're going after).
 
